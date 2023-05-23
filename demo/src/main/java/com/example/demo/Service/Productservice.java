@@ -1,10 +1,12 @@
-package com.example.demo;
+package com.example.demo.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.example.demo.Class.Products;
 
 @Service
 public class Productservice {
@@ -36,5 +38,9 @@ public class Productservice {
             }
             
         }
+    }
+
+    public void deleteProducts( String id) { //@PathVariable for nested url.
+         product.removeIf(t -> t.getId().equals(id));
     }
 }

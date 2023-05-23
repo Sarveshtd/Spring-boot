@@ -1,14 +1,16 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Class.Products;
+import com.example.demo.Service.Productservice;
 
 //When the class is declared for controller must use @RestController
 @RestController
@@ -39,6 +41,11 @@ public class Productscontroller {
     @RequestMapping(method = RequestMethod.PUT, value = "/products/{id}")
     public void  updateproduct(@RequestBody Products products,@PathVariable String id){
         productservice.updateproduct(products, id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/products/{id}")//{id} refers nested url.
+    public void deleteProducts(@PathVariable String id) { //@PathVariable for nested url.
+        productservice.deleteProducts(id);
     }
     
 

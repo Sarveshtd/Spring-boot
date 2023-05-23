@@ -1,7 +1,13 @@
-package com.example.demo;
+package com.example.demo.Class;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity //we r going to save this as sql table so using entity
 public class Products {
-    private String id;
+
+    @Id 
+    private String id; // here id is primary key
     private String name;
     private String describe;
     
