@@ -21,9 +21,10 @@ public class Productservice {
     //             new Products("sports", "cricket", "healthy")
     //             ));
 
-    public List<Products> dis(){ //dis() is same as Productcontroller class 
+    public List<Products> dis(String studentId){ //dis() is same as Productcontroller class 
         List<Products> product = new ArrayList<>();
-        productRepository.findAll().forEach(product :: add);
+        //productRepository.findAll().forEach(product :: add);
+        productRepository.findByStudentsId(studentId).forEach(product :: add);
         return product;
     }
 
@@ -37,7 +38,7 @@ public class Productservice {
         
     }
 
-    public void updateproduct(Products products ,String id) {
+    public void updateproduct(Products products ) {
         // for (int i = 0; i < product.size(); i++) {
         //     Products t =product.get(i);
         //     if(t.getId().equals(id)){

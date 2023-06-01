@@ -15,12 +15,13 @@ public class Course {
     @ManyToOne //All the couses r come to one topic 
     private Products product;
 
-        
-    public Course(String id, String name, String describe , String productId) {
+    public Course(String id, String name, String describe , String productId, String studentId) {
         this.id = id;
         this.name = name;
         this.describe = describe;
-        this.product=new Products(productId, "", "");
+        this.product=new Products(productId, "", "", studentId);
+        //this.students=new Students("", studentId, "", 0000);
+
     }
 
     public Course() {

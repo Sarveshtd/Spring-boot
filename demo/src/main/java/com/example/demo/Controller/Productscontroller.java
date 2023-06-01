@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Class.Products;
+import com.example.demo.Class.Students;
 import com.example.demo.Service.Productservice;
 
 //When the class is declared for controller must use @RestController
@@ -21,29 +22,31 @@ public class Productscontroller {
     private Productservice productservice;
 
     //@RequestMapping is used for get method
-    @RequestMapping("/products")
-    public List<Products> dis() { //<Products> denotes Products.java where all the attributes are assigned.
+    @RequestMapping("/Students/{id}/products")
+    public List<Products> dis(@PathVariable  String id) { //<Products> denotes Products.java where all the attributes are assigned.
         //dis() same to Productservice class 
-        return productservice.dis();
+        return productservice.dis(id);
     }
 
-    @RequestMapping("/products/{id}")//{id} refers nested url.
+    @RequestMapping("/Students/{studentId}/products/{id}")//{id} refers nested url.
     public Products getProducts(@PathVariable String id) { //@PathVariable for nested url.
         return productservice.getProducts(id);
     }
 
    
-    @RequestMapping(method = RequestMethod.POST, value = "/products") //RequestMethod.POST used for handling POST requests.
-    public void  addproducts(@RequestBody Products products){ //products is obj for Products class, we r passing obj as a parameter.
+    @RequestMapping(method = RequestMethod.POST, value = "/Students/{studentId}/products") //RequestMethod.POST used for handling POST requests.
+    public void  addproducts(@RequestBody Products products ,@PathVariable String studentId){ //products is obj for Products class, we r passing obj as a parameter.
+        products.setStudents(new Students("", studentId, "", ""));
          productservice.addproducts(products);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/products/{id}")
-    public void  updateproduct(@RequestBody Products products,@PathVariable String id){
-        productservice.updateproduct(products, id);
+    @RequestMapping(method = RequestMethod.PUT, value = "/Students/{studentId}/products/{id}")
+    public void  updateproduct(@RequestBody Products products,@PathVariable String id, @PathVariable String studentId){
+        products.setStudents(new Students("", studentId, "", ""));
+        productservice.updateproduct(products);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/products/{id}")//{id} refers nested url.
+    @RequestMapping(method = RequestMethod.DELETE, value = "/Students/{studentId}/products/{id}")//{id} refers nested url.
     public void deleteProducts(@PathVariable String id) { //@PathVariable for nested url.
         productservice.deleteProducts(id);
     }

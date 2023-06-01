@@ -19,7 +19,7 @@ public class Courseservice {
     
     public List<Course> dis(String productId){ //dis() is same as Productcontroller class 
         List<Course> courses = new ArrayList<>();
-        courseRepository.findByProductId(productId).forEach(courses :: add);
+        courseRepository.findByProductId(productId ).forEach(courses :: add);
         return courses;
     }
 
