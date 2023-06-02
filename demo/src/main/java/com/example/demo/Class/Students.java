@@ -2,9 +2,10 @@ package com.example.demo.Class;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-
+@Table
 public class Students {
     
     private String names;

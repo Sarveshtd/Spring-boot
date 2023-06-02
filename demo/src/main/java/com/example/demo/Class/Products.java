@@ -3,8 +3,10 @@ package com.example.demo.Class;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity //we r going to save this as sql table so using entity
+@Table
 public class Products {
 
     @Id 
